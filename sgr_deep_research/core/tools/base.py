@@ -9,7 +9,6 @@ from typing import TYPE_CHECKING, Annotated, ClassVar, Literal, Type, TypeVar
 from pydantic import BaseModel, Field, create_model
 
 from sgr_deep_research.core.models import AgentStatesEnum
-from sgr_deep_research.core.prompts import PromptLoader
 from sgr_deep_research.settings import get_config
 
 if TYPE_CHECKING:
