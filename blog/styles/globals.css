@@ -1,0 +1,10 @@
+.article-content a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.article-content p,
+.article-content li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}

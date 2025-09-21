@@ -3,6 +3,7 @@ import { Layout } from 'nextra-theme-blog';
 import Link from 'next/link';
 import config from '../theme.config';
 import 'nextra-theme-blog/style.css';
+import '../styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

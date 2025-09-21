@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { domainToUnicode } from 'node:url';
 
 const ROOT = process.cwd();
 const CONTENT_DIR = path.join(ROOT, 'content');
@@ -158,7 +159,7 @@ for (const d of docs) {
   delete fm.tag;
   delete fm.aliasSlugs;
 
-  const transformed = replaceWikiLinks(parsed.content);
+  const transformed = prettifyBareUrls(replaceWikiLinks(parsed.content));
 
   const imports = [
     "import Head from 'next/head'",
@@ -195,12 +196,15 @@ ${metaLines.join('\n')}
   ${categoryLine}
 </header>`;
 
+  const contentBlock = `
+<div className="article-content">
+${transformed}
+</div>`;
+
   const body = `---
 ${stringifyFrontmatter(fm)}---
 ${imports}
-${headMeta}${headerBlock}
-
-${transformed}
+${headMeta}${headerBlock}${contentBlock}
 
 <Backlinks slug="${d.slug}" scope="${scope}" />
 `;
@@ -268,6 +272,21 @@ function escapeHtml(value = '') {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+function prettifyBareUrls(md) {
+  return md.replace(/(^|\s)(https?:\/\/[^\s)]+)(?=$|\s)/g, (_match, prefix, url) => {
+    try {
+      const parsed = new URL(url);
+      const host = domainToUnicode(parsed.hostname);
+      let pathname = parsed.pathname ? decodeURI(parsed.pathname) : '';
+      let search = parsed.search ? decodeURI(parsed.search) : '';
+      let hash = parsed.hash ? decodeURI(parsed.hash) : '';
+      const pretty = `${parsed.protocol}//${host}${pathname}${search}${hash}`;
+      return `${prefix}[${pretty}](${url})`;
+    } catch (error) {
+      return `${prefix}${url}`;
+    }
+  });
 }
 function escapeAttr(value = '') {
   return escapeHtml(value).replace(/'/g, '&#39;');
