@@ -343,3 +343,6 @@ logs/
 
 sgr-classic/
 batches/
+
+node_modules/
+.obsidian/

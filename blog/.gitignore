@@ -1,0 +1,8 @@
+node_modules
+.next
+pages/blog
+pages/private
+public/index-public.json
+public/backlinks-public.json
+public/slugs-public.json
+.data/
