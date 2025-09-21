@@ -346,3 +346,4 @@ batches/
 
 node_modules/
 .obsidian/
+blog/.wrangler/

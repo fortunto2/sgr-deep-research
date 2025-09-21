@@ -1,0 +1,17 @@
+name = "sgr-blog"
+compatibility_date = "2024-10-01"
+pages_build_output_dir = ".next"
+
+# Environment variables
+[vars]
+NODE_ENV = "production"
+
+# Production environment
+[env.production]
+[env.production.vars]
+NODE_ENV = "production"
+
+# Preview environment
+[env.preview]
+[env.preview.vars]
+NODE_ENV = "preview"

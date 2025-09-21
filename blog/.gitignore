@@ -6,3 +6,7 @@ public/index-public.json
 public/backlinks-public.json
 public/slugs-public.json
 .data/
+out/
+.vercel/
+.next/cache/
+r2-proxy/

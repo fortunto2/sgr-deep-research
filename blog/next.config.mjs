@@ -8,9 +8,10 @@ const withNextra = nextra({
 export default withNextra({
   reactStrictMode: true,
   outputFileTracingRoot: process.cwd(),
-  i18n: {
-    locales: ['ru', 'en'],
-    defaultLocale: 'ru',
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
   },
   webpack(config) {
     config.resolve.alias = config.resolve.alias || {};

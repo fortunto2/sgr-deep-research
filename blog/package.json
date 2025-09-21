@@ -10,7 +10,11 @@
     "predev": "node scripts/sync-content.mjs",
     "prebuild": "node scripts/sync-content.mjs",
     "prestart": "node scripts/sync-content.mjs",
-    "test": "node --test tests"
+    "test": "node --test tests",
+    "deploy": "wrangler deploy",
+    "deploy:dev": "wrangler deploy --env development",
+    "deploy:prod": "wrangler deploy --env production",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -21,6 +25,7 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "24.5.2",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.9"

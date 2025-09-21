@@ -1,0 +1,7 @@
+name = "md-viewer-proxy"
+main = "worker.js"
+compatibility_date = "2024-09-21"
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "sgr-blog-content"
