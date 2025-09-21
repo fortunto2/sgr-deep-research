@@ -130,13 +130,13 @@ class ResearchSource(BaseModel):
     # Analysis results
     key_topics: List[str] = Field(
         default_factory=list,
-        max_items=20,
+        max_length=20,
         description="Key topics identified in the source"
     )
 
     relevance_keywords: List[str] = Field(
         default_factory=list,
-        max_items=50,
+        max_length=50,
         description="Keywords that made this source relevant"
     )
 

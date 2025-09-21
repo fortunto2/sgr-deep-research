@@ -54,7 +54,7 @@ class JobRequest(BaseModel):
 
     tags: List[str] = Field(
         default_factory=list,
-        max_items=10,
+        max_length=10,
         description="User-defined tags for organization and filtering"
     )
 

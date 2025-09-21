@@ -33,7 +33,7 @@ class ChatCompletionRequest(BaseModel):
     model: str | None = Field(
         default=AgentModel.SGR_TOOLS_AGENT,
         description="Agent type or existing agent identifier",
-        example="sgr-tools-agent",
+        json_schema_extra={"example": "sgr-tools-agent"},
     )
     messages: List[ChatMessage] = Field(description="List of messages")
     stream: bool = Field(default=True, description="Enable streaming mode")

@@ -48,12 +48,11 @@ class FileArtifact(BaseModel):
         description="File checksum for integrity verification"
     )
 
-    class Config:
-        """Pydantic configuration."""
-        json_encoders = {
+    model_config = {
+        "json_encoders": {
             datetime: lambda v: v.isoformat()
-        }
-        schema_extra = {
+        },
+        "json_schema_extra": {
             "example": {
                 "file_path": "reports/job_123/research_report.md",
                 "file_type": "text/markdown",
@@ -63,6 +62,7 @@ class FileArtifact(BaseModel):
                 "checksum": "sha256:abc123..."
             }
         }
+    }
 
 
 class JobResult(BaseModel):
@@ -125,7 +125,7 @@ class JobResult(BaseModel):
 
     key_insights: List[str] = Field(
         default_factory=list,
-        max_items=20,
+        max_length=20,
         description="Key insights extracted from research"
     )
 
